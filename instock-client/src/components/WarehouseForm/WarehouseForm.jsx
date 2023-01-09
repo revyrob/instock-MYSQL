@@ -19,7 +19,7 @@ export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,han
             <FormGridLeft>
                 <Title title={"Warehouse Details"}></Title>
                 <Label labelTxt={"Warehouse Name"}>
-                    <Input  name={"wrhsName"} errObj={errObj} defaultValue={warehouse ? warehouse.name : ""}></Input>
+                    <Input  name={"wrhsName"} errObj={errObj} defaultValue={warehouse ? warehouse.warehouse_name : ""}></Input>
                 </Label>
                 <Label labelTxt={"Street Address"}>
                 <Input  name={"wrhsAdd"} errObj={errObj} defaultValue={warehouse ? warehouse.address : ""}></Input>
@@ -37,16 +37,16 @@ export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,han
             <FormGridRight>
                 <Title title={"Contact Details"}></Title>
                 <Label labelTxt={"Contact Name"}>
-                <Input  name={"cntcName"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.name : ""}></Input>
+                <Input  name={"cntcName"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact_name : ""}></Input>
                 </Label>
                 <Label labelTxt={"Position"}>
-                <Input  name={"cntcPos"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.position : ""}></Input>
+                <Input  name={"cntcPos"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact_position : ""}></Input>
                 </Label>
                 <Label labelTxt={"Phone Number"}>
-                <Input  name={"cntcPhn"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.phone : ""}></Input>
+                <Input  name={"cntcPhn"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact_phone : ""}></Input>
                 </Label>   
                 <Label labelTxt={"Email"}>
-                <Input name={"cntcEmail"} errObj={errObj} defaultValue={warehouse ? warehouse.contact.email : ""}></Input>
+                <Input name={"cntcEmail"} errObj={errObj} defaultValue={warehouse ? warehouse.contact_email : ""}></Input>
                 </Label>  
             </FormGridRight>
             </FormBody>

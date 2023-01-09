@@ -12,7 +12,13 @@ router
   .get(warehouseController.findAll)
   .post(warehouseController.add);
 
-router.route("/:id").get(warehouseController.findOne);
+router
+  .route("/:id")
+  .get(warehouseController.findOne)
+  //create patch
+  .patch(warehouseController.edit)
+  //create delete
+  .delete(warehouseController.erase);
 
 /**
  *

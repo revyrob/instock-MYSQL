@@ -7,7 +7,7 @@ const knex = require("knex")(require("../knexfile"));
 const findAllInv = (_req, res) => {
   knex("inventories")
     .then((data) => {
-      console.log("here are the inventory");
+      //console.log("here are the inventory");
       res.status(200).json(data);
     })
     .catch((err) => res.status(400).send(`Error retrieving Inventory: ${err}`));

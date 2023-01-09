@@ -204,7 +204,6 @@ export default function WarehouseDetails() {
             <div className="in-magicBox__box5">
               <label className="in-magicBox__labelMobile">WAREHOUSE</label>{" "}
               <span className="in-magicBox__warehouseNameValue">
-                {/* {inventory.warehouse_id} */}
                 {/* map through the warehouse id for the warehouse name */}
                 {warehouseArr &&
                   warehouseArr.map((x) =>
@@ -218,7 +217,7 @@ export default function WarehouseDetails() {
                 alt="delete icon"
                 onClick={() => {
                   setSelectedInventoryItem(inventory.id);
-                  setNameInventoryItem(inventory.itemName);
+                  setNameInventoryItem(inventory.item_name);
                   openModal();
                 }}
               />
