@@ -1,0 +1,17 @@
+{
+  "name": "instock-mysql",
+  "version": "1.0.0",
+  "description": "Instock mysql version",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd instock-client && npm start",
+    "server": "cd instock_backendMYSQL && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

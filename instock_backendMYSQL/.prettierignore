@@ -1,0 +1,6 @@
+**/node_modules
+/assets
+**/.env
+.vscode
+**/.DS_Store
+rest.http
