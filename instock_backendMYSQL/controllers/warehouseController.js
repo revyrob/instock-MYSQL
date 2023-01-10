@@ -111,16 +111,11 @@ const edit = async (req, res) => {
  */
 const erase = (req, res) => {
   knex("warehouses")
+    .del()
     .where({ id: req.params.id })
+
     .then((data) => {
-      if (data.length === 0) {
-        res
-          .status(404)
-          .del()
-          .send(`Error retrieving warehouse with ID: ${req.params.id}`);
-      }
-      //knex returns matched rows inside of an array
-      res.status(200).json(data[0]);
+      res.status(200).send(`${req.params.id} deleted`).json(data[0]);
     })
     .catch((err) => {
       res.status(400).send(`Error restrieving warehouse ${err}`);

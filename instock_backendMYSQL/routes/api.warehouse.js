@@ -16,7 +16,7 @@ router
   .route("/:id")
   .get(warehouseController.findOne)
   //create patch
-  .patch(warehouseController.edit)
+  .put(warehouseController.edit)
   //create delete
   .delete(warehouseController.erase);
 
