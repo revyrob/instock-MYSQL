@@ -104,7 +104,7 @@ const edit = async (req, res) => {
     .catch((err) => res.status(400).send(`Error creating warehouse: ${err}`));
 };
 
-/**
+**
  *
  * GET 1 WAREHOUSE BY ID and delete it
  *
