@@ -15,7 +15,7 @@ const findAllInv = (_req, res) => {
 
 /**
  *
- * GET 1 WAREHOUSE BY ID
+ * GET 1 Inventory BY ID
  *
  */
 const findOneInv = (req, res) => {

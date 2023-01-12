@@ -22,17 +22,20 @@ const findAll = (_req, res) => {
  *
  */
 const findOne = (req, res) => {
-  knex("warehouses")
+  //warhouse is the primary key we are using to query with
+  knex("warehouses", "inventories")
     .where({ id: req.params.id })
-    .then((data) => {
-      if (data.length === 0) {
-        res
-          .status(404)
-          .send(`Error retrieving warehouse with ID: ${req.params.id}`);
-      }
-      //knex returns matched rows inside of an array
-      res.status(200).json(data[0]);
+    //also need to pull the inventory that matches with the warehouse
+    //join the tables
+    .then(function () {
+      return knex("warehouses")
+        .join("inventories", "warehouses.id", "inventories.warehouse_id")
+        .select(
+          "warehouses.name as name",
+          "inventories.item_name as inventory"
+        );
     })
+
     .catch((err) => {
       res.status(400).send(`Error restrieving warehouse ${err}`);
     });
@@ -44,8 +47,9 @@ const findOne = (req, res) => {
  *
  */
 const add = async (req, res) => {
+  console.log(req.params);
   if (
-    !req.body.name ||
+    !req.body.warehouse ||
     !req.body.address ||
     !req.body.city ||
     !req.body.contact_name ||
@@ -93,13 +97,10 @@ const edit = async (req, res) => {
 
   const newWarehouseId = uuidv4();
   knex("warehouses")
-    .insert({ ...req.body, id: newWarehouseId })
-    .then((_data) => {
-      knex("warehouses")
-        .where({ id: newWarehouseId })
-        .then((data) => {
-          res.status(200).json(data[0]);
-        });
+    .where({ id: req.params.id })
+    .update({ ...req.body, id: newWarehouseId })
+    .then((data) => {
+      res.status(200).send(`${req.params.id} deleted`).json(data[0]);
     })
     .catch((err) => res.status(400).send(`Error creating warehouse: ${err}`));
 };
@@ -111,8 +112,8 @@ const edit = async (req, res) => {
  */
 const erase = (req, res) => {
   knex("warehouses")
-    .del()
     .where({ id: req.params.id })
+    .del()
 
     .then((data) => {
       res.status(200).send(`${req.params.id} deleted`).json(data[0]);

@@ -20,6 +20,7 @@ router
   //create delete
   .delete(warehouseController.erase);
 
+router.route("/:id/withinventory").get(warehouseController.findOne);
 /**
  *
  * GET ALL WAREHOUSES ITEMS
