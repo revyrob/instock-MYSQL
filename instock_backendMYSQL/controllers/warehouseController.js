@@ -22,18 +22,23 @@ const findAll = (_req, res) => {
  *
  */
 const findOne = (req, res) => {
-  //warhouse is the primary key we are using to query with
+  //warehouse is the primary key we are using to query with
   knex("warehouses", "inventories")
     .where({ id: req.params.id })
     //also need to pull the inventory that matches with the warehouse
     //join the tables
     .then(function () {
-      return knex("warehouses")
-        .join("inventories", "warehouses.id", "inventories.warehouse_id")
-        .select(
-          "warehouses.name as name",
-          "inventories.item_name as inventory"
-        );
+      return (
+        knex("warehouses")
+          .join("inventories", "warehouses.id", "inventories.warehouse_id")
+          //how do I select and create an array with the inventory items that match the
+          //warehouse.id
+          //then I want to be able to call the array I create and map through the information
+          .select(
+            "warehouses.name as name",
+            "inventories.item_name as inventory"
+          )
+      );
     })
 
     .catch((err) => {
