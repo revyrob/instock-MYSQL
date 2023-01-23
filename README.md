@@ -51,4 +51,5 @@ Altered the instock-json group project, converted the backend from JSON files to
 
 ## 🔮 Future Plans for Instock
 
+<li>Still working on CRUD operations</li>
 <li>Deploy the application</li>
